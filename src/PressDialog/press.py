@@ -66,6 +66,9 @@ class dialog_press ( wx.Dialog ):
         gSizer7 = wx.GridSizer( 1, 1, 0, 0 )
         
         self.m_notebook2 = wx.Notebook( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
+        
+        self.m_notebook2.SetFont(wx.Font( 10,wx.ROMAN,wx.NORMAL,wx.LIGHT,underline=False,faceName=u"微软雅黑",encoding=wx.FONTENCODING_DEFAULT ))
+        
         self.m_panel7 = wx.Panel( self.m_notebook2, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
         
         
@@ -118,11 +121,13 @@ class dialog_press ( wx.Dialog ):
         self.m_freq2 = wx.TextCtrl( self.m_panel7, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
         gSizer8.Add( self.m_freq2, 0, wx.ALL, 5 )
         
+        
+        
         self.btn_press_set = wx.Button( self.m_panel7, wx.ID_ANY, u"设置", wx.DefaultPosition, wx.DefaultSize, 0 )
-        gSizer8.Add( self.btn_press_set, 0, wx.ALL, 5 )
+        gSizer8.Add( self.btn_press_set, 0, wx.ALIGN_RIGHT, 5 )
         
         self.btn_press_cancel = wx.Button( self.m_panel7, wx.ID_ANY, u"取消", wx.DefaultPosition, wx.DefaultSize, 0 )
-        gSizer8.Add( self.btn_press_cancel, 0, wx.ALL, 5 )
+        gSizer8.Add( self.btn_press_cancel, 0, wx.ALIGN_CENTER_HORIZONTAL, 5 )
         
         
         self.m_panel7.SetSizer( gSizer8 )
@@ -130,12 +135,15 @@ class dialog_press ( wx.Dialog ):
         gSizer8.Fit( self.m_panel7 )
         self.m_notebook2.AddPage( self.m_panel7, u"压制设置", False )
         self.m_panel8 = wx.Panel( self.m_notebook2, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-        gSizer4 = wx.GridSizer( 6, 2, 0, 0 )
+        gSizer4 = wx.GridSizer( 8, 2, 0, 0 )
         
         
         gSizer4.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
         
         
+        gSizer4.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+        
+        gSizer4.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
         gSizer4.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
         
         self.m_staticText71 = wx.StaticText( self.m_panel8, wx.ID_ANY, u"压制发射衰减（dB）", wx.DefaultPosition, wx.DefaultSize, 0 )
@@ -145,11 +153,21 @@ class dialog_press ( wx.Dialog ):
         self.m_slider_weak = wx.Slider( self.m_panel8, wx.ID_ANY, 0, 0, 89, wx.DefaultPosition, wx.Size( 150,-1 ), wx.SL_HORIZONTAL|wx.SL_LABELS|wx.SL_SELRANGE )
         gSizer4.Add( self.m_slider_weak, 0, wx.ALL, 5 )
         
+        gSizer4.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+        gSizer4.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+        
+        gSizer4.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+        gSizer4.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+        
+        gSizer4.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+        gSizer4.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+        
+        
         self.btn_param_set = wx.Button( self.m_panel8, wx.ID_ANY, u"设置", wx.DefaultPosition, wx.DefaultSize, 0 )
-        gSizer4.Add( self.btn_param_set, 0, wx.ALL, 5 )
+        gSizer4.Add( self.btn_param_set, 0, wx.ALIGN_RIGHT, 5 )
         
         self.m_button7 = wx.Button( self.m_panel8, wx.ID_ANY, u"取消", wx.DefaultPosition, wx.DefaultSize, 0 )
-        gSizer4.Add( self.m_button7, 0, wx.ALL, 5 )
+        gSizer4.Add( self.m_button7, 0, wx.ALIGN_CENTER_HORIZONTAL, 5 )
         
         
         self.m_panel8.SetSizer( gSizer4 )
@@ -159,6 +177,7 @@ class dialog_press ( wx.Dialog ):
         self.m_panel9 = wx.Panel( self.m_notebook2, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
         gSizer71 = wx.GridSizer( 7, 1, 0, 0 )
         
+        gSizer71.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
         
         Choices = [ u"压制发射衰减", u"压制中心频率", u"压制模式查询" ]
         self.radio_pressquery= wx.RadioBox( self.m_panel9, wx.ID_ANY, u"查询项", wx.DefaultPosition, wx.Size( 120,140 ),
@@ -170,13 +189,14 @@ class dialog_press ( wx.Dialog ):
         gSizer71.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
         
         
+        
         gSizer71.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
         
         
         gSizer71.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
         
         self.btn_press_query = wx.Button( self.m_panel9, wx.ID_ANY, u"查询", wx.DefaultPosition, wx.DefaultSize, 0 )
-        gSizer71.Add( self.btn_press_query, 0, wx.ALL, 5 )
+        gSizer71.Add( self.btn_press_query, 0, wx.ALIGN_BOTTOM|wx.ALIGN_CENTER, 5 )
         
         
         self.m_panel9.SetSizer( gSizer71 )

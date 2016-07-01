@@ -26,6 +26,7 @@ class dialog_map ( wx.Dialog ):
 
         self.parent=parent
         
+        font_map = wx.Font( 10,wx.ROMAN,wx.NORMAL,wx.LIGHT,underline=False,faceName=u"微软雅黑",encoding=wx.FONTENCODING_DEFAULT )
         
         #############################
         wx.Dialog.__init__ ( self, parent, id = wx.ID_ANY, title = u"地图服务", pos = wx.DefaultPosition, size = wx.Size( 487,322 ), style = wx.DEFAULT_DIALOG_STYLE )
@@ -44,40 +45,52 @@ class dialog_map ( wx.Dialog ):
         gSizer2.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
         
         self.check_elec_distribute = wx.CheckBox( self, wx.ID_ANY, u"电磁分布态势服务", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.check_elec_distribute.SetFont(font_map)
         
         gSizer2.Add( self.check_elec_distribute, 0, wx.ALL, 5 )
         
         self.check_elec_distribute_1 = wx.CheckBox( self, wx.ID_ANY, u"曲面插值分布态势", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.check_elec_distribute_1.SetFont(font_map)
+        
         gSizer2.Add( self.check_elec_distribute_1, 0, wx.ALL, 5 )
         
         gSizer2.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
         
         
         self.check_route = wx.CheckBox( self, wx.ID_ANY, u"电磁分布路径服务", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.check_route.SetFont(font_map)
+        
         gSizer2.Add( self.check_route, 0, wx.ALL, 5 )
         
     
         self.check_ab = wx.CheckBox( self, wx.ID_ANY, u"异常频点定位请求", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.check_ab.SetFont(font_map)
         gSizer2.Add( self.check_ab, 0, wx.ALL, 5 )
         
         gSizer2.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
         
         self.check_allstation = wx.CheckBox( self, wx.ID_ANY, u"全部台站记录属性", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.check_allstation.SetFont(font_map)
         gSizer2.Add( self.check_allstation, 0, wx.ALL, 5 )
         
         self.check_regiPro = wx.CheckBox( self, wx.ID_ANY, u"指定频率范围登记属性", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.check_regiPro.SetFont(font_map)
         gSizer2.Add( self.check_regiPro, 0, wx.ALL, 5 )
         
         self.check_curPro = wx.CheckBox( self, wx.ID_ANY, u"登记台站当前属性", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.check_curPro.SetFont(font_map)
         gSizer2.Add( self.check_curPro, 0, wx.ALL, 5 )
         
         self.check_onlineport = wx.CheckBox( self, wx.ID_ANY, u"在网终端查询", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.check_onlineport.SetFont(font_map)
         gSizer2.Add( self.check_onlineport, 0, wx.ALL, 5 )
         
         self.check_allport = wx.CheckBox( self, wx.ID_ANY, u"全部注册终端查询", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.check_allport.SetFont(font_map)
         gSizer2.Add( self.check_allport, 0, wx.ALL, 5 )
         
         
+        gSizer2.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
         gSizer2.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
         
         self.btn_map_ok = wx.Button( self, wx.ID_ANY, u"确定", wx.DefaultPosition, wx.DefaultSize, 0 )

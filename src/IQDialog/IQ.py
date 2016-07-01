@@ -19,6 +19,7 @@ FrameHeader,FrameTail,Hour5bit,CentreFreq,Query,RecvGainSet
 from src.CommonUse.staticVar import  staticVar
 import time 
 from src.Thread import thread_recv_iq
+from wx import BitmapFromImage
 ###########################################################################
 ## Class MyDialog1
 ###########################################################################
@@ -48,6 +49,9 @@ class dialog_IQ ( wx.Dialog ):
 		gSizer1 = wx.GridSizer( 1, 1, 0, 0 )
 		
 		self.m_notebook1 = wx.Notebook( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
+		
+		self.m_notebook1.SetFont(wx.Font( 10,wx.ROMAN,wx.NORMAL,wx.LIGHT,underline=False,faceName=u"微软雅黑",encoding=wx.FONTENCODING_DEFAULT ))
+		
 		self.m_panel1 = wx.Panel( self.m_notebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
 		gSizer2 = wx.GridSizer( 9, 3, 0, 0 )
 		
@@ -125,11 +129,13 @@ class dialog_IQ ( wx.Dialog ):
 		self.m_staticText16.Wrap( -1 )
 		gSizer2.Add( self.m_staticText16, 0, wx.ALL, 5 )
 		
+		gSizer2.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		
 		self.m_btn_set = wx.Button( self.m_panel1, wx.ID_ANY, u"确定", wx.DefaultPosition, wx.DefaultSize, 0 )
 		gSizer2.Add( self.m_btn_set, 0, wx.ALL, 5 )
 		
 		self.m_btn_cancel = wx.Button( self.m_panel1, wx.ID_ANY, u"取消", wx.DefaultPosition, wx.DefaultSize, 0 )
-		gSizer2.Add( self.m_btn_cancel, 0, wx.ALL, 5 )
+		gSizer2.Add( self.m_btn_cancel, 0,wx.ALL, 5 )
 		
 		
 		self.m_panel1.SetSizer( gSizer2 )
@@ -137,7 +143,19 @@ class dialog_IQ ( wx.Dialog ):
 		gSizer2.Fit( self.m_panel1 )
 		self.m_notebook1.AddPage( self.m_panel1, u"定频设置", False )
 		self.m_panel2 = wx.Panel( self.m_notebook1, wx.ID_ANY, wx.DefaultPosition, wx.Size( 200,-1 ), wx.TAB_TRAVERSAL )
-		gSizer4 = wx.GridSizer( 2, 2, 0, 0 )
+		gSizer4 = wx.GridSizer( 9, 3, 0, 0 )
+		
+		gSizer4.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		gSizer4.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		gSizer4.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		
+		gSizer4.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		gSizer4.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		gSizer4.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		
+		gSizer4.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		gSizer4.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		gSizer4.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
 		
 		self.m_staticText19 = wx.StaticText( self.m_panel2, wx.ID_ANY, u"接收增益（dB）", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText19.Wrap( -1 )
@@ -146,32 +164,66 @@ class dialog_IQ ( wx.Dialog ):
 		self.m_slider_gain = wx.Slider( self.m_panel2, wx.ID_ANY, 7, -1, 73, wx.Point( -1,-1 ), wx.Size( 150,20 ), wx.SL_HORIZONTAL|wx.SL_LABELS|wx.SL_SELRANGE )
 		gSizer4.Add( self.m_slider_gain, 0, wx.ALIGN_CENTER|wx.ALL, 5 )
 		
+		gSizer4.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		
+		gSizer4.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		gSizer4.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		gSizer4.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		
+		
+		
+		gSizer4.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		gSizer4.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		gSizer4.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		
+		gSizer4.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		gSizer4.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		gSizer4.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		
+		gSizer4.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		
 		self.btn_ok_param = wx.Button( self.m_panel2, wx.ID_ANY, u"确定", wx.DefaultPosition, wx.DefaultSize, 0 )
-		gSizer4.Add( self.btn_ok_param, 0, wx.ALIGN_CENTER|wx.ALL, 5 )
+		gSizer4.Add( self.btn_ok_param, 0, wx.ALL, 5 )
 		
 		self.btn_cancel_param = wx.Button( self.m_panel2, wx.ID_ANY, u"取消", wx.DefaultPosition, wx.DefaultSize, 0 )
-		gSizer4.Add( self.btn_cancel_param, 0, wx.ALIGN_CENTER|wx.ALL, 5 )
+		gSizer4.Add( self.btn_cancel_param, 0, wx.ALL, 5 )
 		
 		
 		self.m_panel2.SetSizer( gSizer4 )
 		self.m_panel2.Layout()
 		self.m_notebook1.AddPage( self.m_panel2, u"参数设置", False )
 		self.m_panel3 = wx.Panel( self.m_notebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		gSizer5 = wx.GridSizer( 8, 2, 0, 0 )
+		gSizer5 = wx.GridSizer( 9, 3, 0, 0 )
 		
+		gSizer5.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
 		gSizer5.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
 		gSizer5.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
 		
 		self.m_check_wave = wx.CheckBox( self.m_panel3, wx.ID_ANY, u"波形图", wx.DefaultPosition, wx.DefaultSize, 0 )
 		gSizer5.Add( self.m_check_wave, 0, wx.ALL, 5 )
 		
-		
-		
 		self.m_check_spec = wx.CheckBox( self.m_panel3, wx.ID_ANY, u"功率谱", wx.DefaultPosition, wx.DefaultSize, 0 )
 		gSizer5.Add( self.m_check_spec, 0, wx.ALL, 5 )
 		
+		
 		self.m_check_water = wx.CheckBox( self.m_panel3, wx.ID_ANY, u"瀑布图", wx.DefaultPosition, wx.DefaultSize, 0 )
 		gSizer5.Add( self.m_check_water, 0, wx.ALL, 5 )
+		
+		img_waveform = wx.Image('..//icons//waveform.png',wx.BITMAP_TYPE_ANY)
+		bmp_waveform = wx.StaticBitmap(self.m_panel3,-1,wx.BitmapFromImage(img_waveform))
+		gSizer5.Add(bmp_waveform , 0 , wx.ALIGN_TOP|wx.ALIGN_CENTER_HORIZONTAL)
+		
+		img_spectrum = wx.Image('..//icons//spectrum.png',wx.BITMAP_TYPE_ANY)
+		bmp_spectrum = wx.StaticBitmap(self.m_panel3,-1,wx.BitmapFromImage(img_spectrum))
+		gSizer5.Add(bmp_spectrum , 0 , wx.ALIGN_TOP|wx.ALIGN_CENTER_HORIZONTAL)
+		
+		img_waterfall = wx.Image('..//icons//waterfull.png',wx.BITMAP_TYPE_ANY)
+		bmp_waterfall = wx.StaticBitmap(self.m_panel3,-1,wx.BitmapFromImage(img_waterfall))
+		gSizer5.Add(bmp_waterfall, 0 , wx.ALIGN_TOP|wx.ALIGN_CENTER_HORIZONTAL)
+		
+		gSizer5.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		gSizer5.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		gSizer5.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
 		
 		self.m_check_CCDF = wx.CheckBox( self.m_panel3, wx.ID_ANY, u"CCDF", wx.DefaultPosition, wx.DefaultSize, 0 )
 		gSizer5.Add( self.m_check_CCDF, 0, wx.ALL, 5 )
@@ -183,7 +235,23 @@ class dialog_IQ ( wx.Dialog ):
 		self.m_check_constel = wx.CheckBox( self.m_panel3, wx.ID_ANY, u"星座图", wx.DefaultPosition, wx.DefaultSize, 0 )
 		gSizer5.Add( self.m_check_constel, 0, wx.ALL, 5 )
 		
+		img_ccdf = wx.Image('..//icons//ccdf.png',wx.BITMAP_TYPE_ANY)
+		bmp_ccdf = wx.StaticBitmap(self.m_panel3,-1,wx.BitmapFromImage(img_ccdf))
+		gSizer5.Add(bmp_ccdf, 0 ,  wx.ALIGN_TOP|wx.ALIGN_CENTER_HORIZONTAL)
 		
+		img_eye = wx.Image('..//icons//eye.png',wx.BITMAP_TYPE_ANY)
+		bmp_eye = wx.StaticBitmap(self.m_panel3,-1,wx.BitmapFromImage(img_eye))
+		gSizer5.Add(bmp_eye, 0 ,  wx.ALIGN_TOP|wx.ALIGN_CENTER_HORIZONTAL)
+		
+		img_constellation = wx.Image('..//icons//constellation.png',wx.BITMAP_TYPE_ANY)
+		bmp_constellation = wx.StaticBitmap(self.m_panel3,-1,wx.BitmapFromImage(img_constellation))
+		gSizer5.Add(bmp_constellation, 0 ,  wx.ALIGN_TOP|wx.ALIGN_CENTER_HORIZONTAL)
+		
+		gSizer5.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		gSizer5.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		gSizer5.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		
+		gSizer5.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
 		
 		self.btn_display = wx.Button( self.m_panel3, wx.ID_ANY, u"确定", wx.DefaultPosition, wx.DefaultSize, 0 )
 		gSizer5.Add( self.btn_display, 0, wx.ALL, 5 )
@@ -209,9 +277,10 @@ class dialog_IQ ( wx.Dialog ):
 		
 		
 		gSizer6.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+		gSizer6.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
 		
 		self.m_btn_query = wx.Button( self.m_panel4, wx.ID_ANY, u"查询", wx.DefaultPosition, wx.DefaultSize, 0 )
-		gSizer6.Add( self.m_btn_query, 0, wx.ALL, 5 )
+		gSizer6.Add( self.m_btn_query, 0, wx.ALIGN_CENTER_HORIZONTAL, 5 )
 		
 		
 		self.m_panel4.SetSizer( gSizer6 )

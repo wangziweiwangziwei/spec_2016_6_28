@@ -23,6 +23,8 @@ class dialog_historydis ( wx.Dialog ):
     def __init__( self, parent ):
         wx.Dialog.__init__ ( self, parent, id = wx.ID_ANY, title = u"历史数据", pos = wx.DefaultPosition, size = wx.Size( 200 ,300 ), style = wx.DEFAULT_DIALOG_STYLE )
         
+        self.SetFont(wx.Font( 10,wx.ROMAN,wx.NORMAL,wx.LIGHT,underline=False,faceName=u"微软雅黑",encoding=wx.FONTENCODING_DEFAULT ))
+        
         self.SetSizeHintsSz( wx.DefaultSize, wx.DefaultSize )
         
         gSizer4 = wx.GridSizer( 5, 1, 0, 0 )
@@ -39,7 +41,7 @@ class dialog_historydis ( wx.Dialog ):
         gSizer4.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
         
         self.btn_ok = wx.Button( self, wx.ID_ANY, u"确定", wx.DefaultPosition, wx.DefaultSize, 0 )
-        gSizer4.Add( self.btn_ok, 0, wx.ALL, 5 )
+        gSizer4.Add( self.btn_ok, 0, wx.ALIGN_CENTER, 5 )
         
         
         self.SetSizer( gSizer4 )

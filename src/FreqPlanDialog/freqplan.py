@@ -6,6 +6,8 @@ class QueryFreqPlanDialog(wx.Dialog):
     def __init__(self):
         wx.Dialog.__init__(self,None,-1,u"国家无线电频率规划",size=(300,200))
         panel=wx.Panel(self,-1)
+        panel.SetFont(wx.Font( 10,wx.ROMAN,wx.NORMAL,wx.LIGHT,underline=False,faceName=u"微软雅黑",encoding=wx.FONTENCODING_DEFAULT ))
+        
         sizer=wx.BoxSizer(wx.VERTICAL)
         self.FreqStart=wx.TextCtrl(panel,-1,size=(60,25))
         self.FreqEnd=wx.TextCtrl(panel,-1,size=(60,25))
@@ -20,10 +22,10 @@ class QueryFreqPlanDialog(wx.Dialog):
         sizer.Add(hBox3)
         sizer.Add((20,20))
         hBox1=wx.BoxSizer(wx.HORIZONTAL)
-        self.btn_ok=wx.Button(panel,-1,"OK",size=(60,25))
+        self.btn_ok=wx.Button(panel,-1,u"确定",size=(60,25))
         
-        hBox1.Add(self.btn_ok,0,wx.LEFT,20)
-        hBox1.Add(wx.Button(panel,wx.ID_CANCEL,"CANCEL",size=(60,25)),0,wx.LEFT,20)
+        hBox1.Add(self.btn_ok,0,wx.ALL,20)
+        hBox1.Add(wx.Button(panel,wx.ID_CANCEL,u"取消",size=(60,25)),0,wx.ALL,20)
         sizer.Add(hBox1)
         panel.SetSizer(sizer)
 

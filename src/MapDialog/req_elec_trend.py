@@ -8,7 +8,7 @@ class ReqElecTrendDialog(wx.Dialog):
     def __init__(self):
         wx.Dialog.__init__(self,None,-1,u"电磁分布态势数据请求",size=(400,500))
         
-        
+        self.SetFont(wx.Font( 10,wx.ROMAN,wx.NORMAL,wx.LIGHT,underline=False,faceName=u"微软雅黑",encoding=wx.FONTENCODING_DEFAULT ))
         
         
         

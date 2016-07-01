@@ -3,6 +3,9 @@ import wx
 class ChangeAnotherPress(wx.Dialog):
     def __init__(self):
         wx.Dialog.__init__(self,None,-1,u"改变另一终端压制参数",size=(400,550))
+        
+        self.SetFont(wx.Font( 9,wx.ROMAN,wx.NORMAL,wx.LIGHT,underline=False,faceName=u"微软雅黑",encoding=wx.FONTENCODING_DEFAULT ))
+        
         sampleList=[u"手动",u"自动",u"不压制"]
         self.radioBox= wx.RadioBox(self, -1,label=u"压制模式",pos=(20,15), \
                                    size=(100,30),choices=sampleList)
@@ -40,8 +43,8 @@ class ChangeAnotherPress(wx.Dialog):
         wx.StaticBox(self, -1, u'发射衰减(dB)', (10, 390), size=(240, 60))
         self.sliderWeak = wx.Slider(self,-1, 7,-1, 73, (20, 410), (220, -1), \
                                     wx.SL_AUTOTICKS | wx.SL_HORIZONTAL | wx.SL_LABELS)
-        wx.Button(self,wx.ID_OK,"OK",(20,470),(60,20))
-        wx.Button(self,wx.ID_CANCEL,"CANCEL",(120,470),(60,20))
+        wx.Button(self,wx.ID_OK,u"确定",(20,470),(60,20))
+        wx.Button(self,wx.ID_CANCEL,u"取消",(120,470),(60,20))
         
         self.Bind(wx.EVT_RADIOBOX,self.OnRadio,self.radioFreq)
         self.textPressTime2.Enable(False)

@@ -61,7 +61,13 @@ class dialog_sweep ( wx.Dialog ):
         gSizer2 = wx.GridSizer( 1, 1, 0, 0 )
         
         self.m_notebook3 = wx.Notebook( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
+        
+        self.m_notebook3.SetFont(wx.Font( 10,wx.ROMAN,wx.NORMAL,wx.LIGHT,underline=False,faceName=u"微软雅黑",encoding=wx.FONTENCODING_DEFAULT ))
+        
         self.p_sweep_set = wx.Panel( self.m_notebook3, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        
+        
+        
         gSizer3 = wx.GridSizer( 6, 2, 0, 0 )
         
         
@@ -105,10 +111,10 @@ class dialog_sweep ( wx.Dialog ):
         gSizer3.Add( self.m_change_thred, 0, wx.ALL, 5 )
         
         self.btn_set = wx.Button( self.p_sweep_set, wx.ID_ANY, u"设置", wx.DefaultPosition, wx.DefaultSize, 0 )
-        gSizer3.Add( self.btn_set, 0, wx.ALL, 5 )
+        gSizer3.Add( self.btn_set, 0, wx.ALIGN_TOP|wx.ALIGN_RIGHT, 5 )
         
         self.btn_cancel = wx.Button( self.p_sweep_set, wx.ID_ANY, u"取消", wx.DefaultPosition, wx.DefaultSize, 0 )
-        gSizer3.Add( self.btn_cancel, 0, wx.ALL, 5 )
+        gSizer3.Add( self.btn_cancel, 0, wx.ALIGN_TOP|wx.ALIGN_CENTER_HORIZONTAL, 5 )
         
         
         self.p_sweep_set.SetSizer( gSizer3 )
@@ -116,6 +122,7 @@ class dialog_sweep ( wx.Dialog ):
         gSizer3.Fit( self.p_sweep_set )
         self.m_notebook3.AddPage( self.p_sweep_set, u"扫频设置", False )
         self.p_sweep_param = wx.Panel( self.m_notebook3, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        #self.p_sweep_param.SetFont(wx.Font( 10,wx.ROMAN,wx.NORMAL,wx.LIGHT,underline=False,faceName=u"微软雅黑",encoding=wx.FONTENCODING_DEFAULT ))
         gSizer4 = wx.GridSizer( 6, 2, 0, 0 )
         
         self.m_check_recvgain = wx.CheckBox( self.p_sweep_param, wx.ID_ANY, u"  接收增益（dB）", wx.DefaultPosition, wx.DefaultSize, 0 )
@@ -145,7 +152,7 @@ class dialog_sweep ( wx.Dialog ):
         self.m_combo_channelgain = wx.ComboBox( self.p_sweep_param, wx.ID_ANY, 'SRF201', wx.DefaultPosition, wx.DefaultSize, m_combo_channelgainChoices, 0 )
         gSizer4.Add( self.m_combo_channelgain, 0, wx.ALL, 5 )
         
-        self.m_check_antgain = wx.CheckBox( self.p_sweep_param, wx.ID_ANY, u"天线接收增益表", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.m_check_antgain = wx.CheckBox( self.p_sweep_param, wx.ID_ANY, u"  天线接收增益表", wx.DefaultPosition, wx.DefaultSize, 0 )
         gSizer4.Add( self.m_check_antgain, 0, wx.ALL, 5 )
         
         m_combo_antgainChoices =[u"超短套筒天线",u"超短螺旋天线",u"单鞭螺旋天线",u"平面双锥天线",u"AH-8000",u"AH-7000", \
@@ -154,10 +161,10 @@ class dialog_sweep ( wx.Dialog ):
         gSizer4.Add( self.m_combo_antgain, 0, wx.ALL, 5 )
         
         self.m_button_paramSet = wx.Button( self.p_sweep_param, wx.ID_ANY, u"确定", wx.DefaultPosition, wx.DefaultSize, 0 )
-        gSizer4.Add( self.m_button_paramSet, 0, wx.ALL, 5 )
+        gSizer4.Add( self.m_button_paramSet, 0, wx.ALIGN_TOP|wx.ALIGN_RIGHT, 5 )
         
         self.m_button_cancel = wx.Button( self.p_sweep_param, wx.ID_ANY, u"取消", wx.DefaultPosition, wx.DefaultSize, 0 )
-        gSizer4.Add( self.m_button_cancel, 0, wx.ALL, 5 )
+        gSizer4.Add( self.m_button_cancel, 0, wx.ALIGN_TOP|wx.ALIGN_CENTER_HORIZONTAL, 5 )
         
         
         self.p_sweep_param.SetSizer( gSizer4 )
@@ -165,19 +172,42 @@ class dialog_sweep ( wx.Dialog ):
         gSizer4.Fit( self.p_sweep_param )
         self.m_notebook3.AddPage( self.p_sweep_param, u"参数设置", True )
         self.p_sweep_display = wx.Panel( self.m_notebook3, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-        gSizer41 = wx.GridSizer( 6, 1, 0, 0 )
+        #self.p_sweep_display.SetFont(wx.Font( 10,wx.ROMAN,wx.NORMAL,wx.LIGHT,underline=False,faceName=u"微软雅黑",encoding=wx.FONTENCODING_DEFAULT ))
+        gSizer41 = wx.GridSizer( 6, 2, 0, 0 )
         
         
+        gSizer41.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
         gSizer41.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
         
         self.check_spec = wx.CheckBox( self.p_sweep_display, wx.ID_ANY, u"   功率谱图", wx.DefaultPosition, wx.DefaultSize, 0 )
         gSizer41.Add( self.check_spec, 0, wx.ALL, 5 )
         
+        #gSizer41.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+        
+        img_spectrum = wx.Image('..//icons//spectrum.png',wx.BITMAP_TYPE_ANY)
+        bmp_spectrum = wx.StaticBitmap(self.p_sweep_display,-1,wx.BitmapFromImage(img_spectrum))
+        gSizer41.Add(bmp_spectrum,0,wx.LEFT)
+        
+        gSizer41.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+        gSizer41.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+        #gSizer41.Add(wx.StaticLine(self.p_sweep_display),0,wx.EXPAND|wx.TOP|wx.BOTTOM,1)
+        #gSizer41.Add(wx.StaticLine(self.p_sweep_display),0,wx.EXPAND|wx.TOP|wx.BOTTOM,1)
+        
         self.check_water = wx.CheckBox( self.p_sweep_display, wx.ID_ANY, u"   瀑布图", wx.DefaultPosition, wx.DefaultSize, 0 )
         gSizer41.Add( self.check_water, 0, wx.ALL, 5 )
         
+        #gSizer41.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+        
+        img_waterfall = wx.Image('..//icons//waterfull.png',wx.BITMAP_TYPE_ANY)
+        bmp_waterfall = wx.StaticBitmap(self.p_sweep_display,-1,wx.BitmapFromImage(img_waterfall))
+        gSizer41.Add(bmp_waterfall,0,wx.LEFT)
+        
+        gSizer41.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+        gSizer41.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+        gSizer41.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+        
         self.btn_display = wx.Button( self.p_sweep_display, wx.ID_ANY, u"确定", wx.DefaultPosition, wx.DefaultSize, 0 )
-        gSizer41.Add( self.btn_display, 0, wx.ALL, 5 )
+        gSizer41.Add( self.btn_display, 0, wx.ALIGN_TOP|wx.ALIGN_CENTER_HORIZONTAL, 5 )
         
         
         self.p_sweep_display.SetSizer( gSizer41 )
@@ -185,9 +215,13 @@ class dialog_sweep ( wx.Dialog ):
         gSizer41.Fit( self.p_sweep_display )
         self.m_notebook3.AddPage( self.p_sweep_display, u"显示窗口", False )
         self.p_seep_query = wx.Panel( self.m_notebook3, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        #self.p_seep_query.SetFont(wx.Font( 10,wx.ROMAN,wx.NORMAL,wx.LIGHT,underline=False,faceName=u"微软雅黑",encoding=wx.FONTENCODING_DEFAULT ))
+
 #         self.p_seep_query.SetFont( wx.Font( 12, 74, 90, 90, False, "微软雅黑" ) )
         
         bSizer2 = wx.BoxSizer( wx.VERTICAL )
+        
+        
         
         m_radio_queryChoices = [ u"扫频范围", u"接收增益", u"工作状态",u"检测门限",u"接收通道增益修正表", u"天线增益修正表" ]
         self.m_radio_query = wx.RadioBox( self.p_seep_query, wx.ID_ANY, u"查询项", wx.DefaultPosition, wx.DefaultSize, m_radio_queryChoices, 1, wx.RA_SPECIFY_COLS )
@@ -197,7 +231,9 @@ class dialog_sweep ( wx.Dialog ):
         self.btn_query = wx.Button( self.p_seep_query, wx.ID_ANY, u"查询", wx.DefaultPosition, wx.DefaultSize, 0 )
 #         self.btn_query.SetFont( wx.Font( 9, 74, 90, 90, False, "微软雅黑" ) )
         
-        bSizer2.Add( self.btn_query, 0, wx.ALL, 5 )
+        #bSizer2.AddSpacer( ( 0, 0), 1, wx.EXPAND, 5 )
+        
+        bSizer2.Add( self.btn_query, 0, wx.ALIGN_BOTTOM|wx.ALIGN_CENTER, 5 )
         
         
         self.p_seep_query.SetSizer( bSizer2 )

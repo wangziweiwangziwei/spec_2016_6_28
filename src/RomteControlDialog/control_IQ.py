@@ -4,6 +4,9 @@ import wx
 class ChangeAnotherIQ(wx.Dialog):
     def __init__(self):
         wx.Dialog.__init__(self,None,-1,u"改变另一终端定频参数",size=(350,500))
+        
+        self.SetFont(wx.Font( 10,wx.ROMAN,wx.NORMAL,wx.LIGHT,underline=False,faceName=u"微软雅黑",encoding=wx.FONTENCODING_DEFAULT ))
+        
         wx.StaticText(self,-1,u"频率个数",pos=(20,20))
         wx.StaticLine(self,-1,pos=(20,40),size=(220,2),style=wx.LI_HORIZONTAL)
 
@@ -39,8 +42,8 @@ class ChangeAnotherIQ(wx.Dialog):
         self.sliderGain = wx.Slider(self,-1, 7,-1, 73, (20, 380), (220, -1), \
                                     wx.SL_AUTOTICKS | wx.SL_HORIZONTAL | wx.SL_LABELS)
         
-        wx.Button(self,wx.ID_OK,"OK",size=(60,20),pos=(20,440))
-        wx.Button(self,wx.ID_CANCEL,"CANCEL",(100,440),(60,20))
+        wx.Button(self,wx.ID_OK,u"确定",size=(60,20),pos=(20,440))
+        wx.Button(self,wx.ID_CANCEL,u"取消",(100,440),(60,20))
         
     def OnRadio(self,event):
         switch=self.radioBox.GetSelection()

@@ -4,6 +4,8 @@ class ChangeAnotherSweep(wx.Dialog):
     def __init__(self):
         wx.Dialog.__init__(self,None,-1,u"改变另一终端扫频参数",size=(430,600))
         
+        self.SetFont(wx.Font( 10,wx.ROMAN,wx.NORMAL,wx.LIGHT,underline=False,faceName=u"微软雅黑",encoding=wx.FONTENCODING_DEFAULT ))
+        
         panel=wx.Panel(self,-1)
         sizer=wx.BoxSizer(wx.VERTICAL)
         sampleList = ['3','10','20','25','30','40']
@@ -89,8 +91,8 @@ class ChangeAnotherSweep(wx.Dialog):
         sizer.Add((20,10))
     
         hBox1=wx.BoxSizer(wx.HORIZONTAL)
-        hBox1.Add(wx.Button(panel,wx.ID_OK,"OK",size=(60,25)),0,wx.LEFT,20)
-        hBox1.Add(wx.Button(panel,wx.ID_CANCEL,"CANCEL",size=(60,25)),0,wx.LEFT,20)
+        hBox1.Add(wx.Button(panel,wx.ID_OK,u"确定",size=(60,25)),0,wx.LEFT,20)
+        hBox1.Add(wx.Button(panel,wx.ID_CANCEL,u"取消",size=(60,25)),0,wx.LEFT,20)
         sizer.Add(hBox1)
         panel.SetSizer(sizer)
         self.Bind(wx.EVT_RADIOBOX, self.OnRadio)

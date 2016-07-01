@@ -8,6 +8,9 @@ import  wx
 class ReqElecPathDialog(wx.Dialog):
     def __init__(self,parent):
         wx.Dialog.__init__(self,None,-1,u"电磁路径分布数据请求",size=(400,650))
+        
+        self.SetFont(wx.Font( 10,wx.ROMAN,wx.NORMAL,wx.LIGHT,underline=False,faceName=u"微软雅黑",encoding=wx.FONTENCODING_DEFAULT ))
+        
         panel=wx.Panel(self,-1)
         
         ###############################

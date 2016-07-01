@@ -7,6 +7,8 @@ class QueryCurStationProDialog(wx.Dialog):
     def __init__(self):
         wx.Dialog.__init__(self,None,-1,u"登记台站当前属性查询",size=(500,500))
         
+        self.SetFont(wx.Font( 10,wx.ROMAN,wx.NORMAL,wx.LIGHT,underline=False,faceName=u"微软雅黑",encoding=wx.FONTENCODING_DEFAULT ))
+        
         #########################################
         self.tail=FrameTail(0,0,0xAA)
         

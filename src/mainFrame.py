@@ -72,11 +72,11 @@ class MainFrame ( wx.aui.AuiMDIParentFrame ):
         
         #######################################
 #         os.chdir("./apache-tomcat-7.0.68//bin//")
-        os.chdir("../apache-tomcat-7.0.68//bin//")
+#         os.chdir("../apache-tomcat-7.0.68//bin//")
         
         os.system("startup.bat")
         dirname, filename = os.path.split(os.path.abspath(sys.argv[0]))
-        os.chdir(dirname)
+        os.chdir(dirname)   
         ########### 初始化变量  #################
         self.start_local_iq=0
 
@@ -158,13 +158,17 @@ class MainFrame ( wx.aui.AuiMDIParentFrame ):
         self.SetSizeHintsSz( wx.DefaultSize, wx.DefaultSize )
         
         self.m_toolBar1 = self.CreateToolBar( wx.TB_HORIZONTAL|wx.TB_TEXT, wx.ID_ANY ) 
-        self.m_start_hw = self.m_toolBar1.AddLabelTool( wx.ID_ANY, u"连接硬件  ", wx.Bitmap( "..//icons//green_2.png", wx.BITMAP_TYPE_ANY ), wx.NullBitmap, wx.ITEM_NORMAL, wx.EmptyString, wx.EmptyString, None ) 
+        self.m_toolBar1.SetFont(wx.Font( 8,wx.ROMAN,wx.NORMAL,wx.LIGHT,underline=False,faceName=u"华文细黑 常规",encoding=wx.FONTENCODING_DEFAULT ))
+        
+        self.m_start_hw = self.m_toolBar1.AddLabelTool( wx.ID_ANY, u"连接硬件  ", wx.Bitmap( "..//icons//pci.png", wx.BITMAP_TYPE_ANY ), wx.NullBitmap, wx.ITEM_NORMAL, wx.EmptyString, wx.EmptyString, None ) 
+        
+        
         self.m_toolBar1.AddSeparator()
         
         self.m_toolBar1.AddSeparator()
         self.m_toolBar1.AddSeparator()
         
-        self.m_connect = self.m_toolBar1.AddLabelTool( wx.ID_ANY, u"连接服务器", wx.Bitmap( "..//icons//link_start.jpg", wx.BITMAP_TYPE_ANY ), wx.NullBitmap, wx.ITEM_NORMAL, wx.EmptyString, wx.EmptyString, None ) 
+        self.m_connect = self.m_toolBar1.AddLabelTool( wx.ID_ANY, u"连接服务器", wx.Bitmap( "..//icons//server_connect.png", wx.BITMAP_TYPE_ANY ), wx.NullBitmap, wx.ITEM_NORMAL, wx.EmptyString, wx.EmptyString, None ) 
         
         self.m_toolBar1.AddSeparator()
         
@@ -185,34 +189,34 @@ class MainFrame ( wx.aui.AuiMDIParentFrame ):
         self.m_toolBar1.AddSeparator()
         self.m_toolBar1.AddSeparator()
         
-        self.m_tool_press = self.m_toolBar1.AddLabelTool( wx.ID_ANY, u"压制发射", wx.Bitmap( "..//icons//red_1.png", wx.BITMAP_TYPE_ANY ), wx.NullBitmap, wx.ITEM_NORMAL, wx.EmptyString, wx.EmptyString, None ) 
+        self.m_tool_press = self.m_toolBar1.AddLabelTool( wx.ID_ANY, u"压制发射", wx.Bitmap( "..//icons//radio.png", wx.BITMAP_TYPE_ANY ), wx.NullBitmap, wx.ITEM_NORMAL, wx.EmptyString, wx.EmptyString, None ) 
         
         self.m_toolBar1.AddSeparator()
         
         self.m_toolBar1.AddSeparator()
         
-        self.m_tool_map = self.m_toolBar1.AddLabelTool( wx.ID_ANY, u"地图服务", wx.Bitmap( "..//icons//Play_1.png", wx.BITMAP_TYPE_ANY ), wx.NullBitmap, wx.ITEM_NORMAL, wx.EmptyString, wx.EmptyString, None ) 
-        
-        self.m_toolBar1.AddSeparator()
-        
-        self.m_toolBar1.AddSeparator()
-        self.m_toolBar1.AddSeparator()
-        
-        self.m_tool_freqplan = self.m_toolBar1.AddLabelTool( wx.ID_ANY, u"查询频率规划", wx.Bitmap( "..//icons//Pause_1.png", wx.BITMAP_TYPE_ANY ), wx.NullBitmap, wx.ITEM_NORMAL, wx.EmptyString, wx.EmptyString, None ) 
+        self.m_tool_map = self.m_toolBar1.AddLabelTool( wx.ID_ANY, u"地图服务", wx.Bitmap( "..//icons//maps1.png", wx.BITMAP_TYPE_ANY ), wx.NullBitmap, wx.ITEM_NORMAL, wx.EmptyString, wx.EmptyString, None ) 
         
         self.m_toolBar1.AddSeparator()
         
         self.m_toolBar1.AddSeparator()
         self.m_toolBar1.AddSeparator()
         
-        self.m_tool_remoteCtrl = self.m_toolBar1.AddLabelTool( wx.ID_ANY, u"远程控制", wx.Bitmap( "..//icons//laba_1.png", wx.BITMAP_TYPE_ANY ), wx.NullBitmap, wx.ITEM_NORMAL, wx.EmptyString, wx.EmptyString, None ) 
+        self.m_tool_freqplan = self.m_toolBar1.AddLabelTool( wx.ID_ANY, u"查询频率规划", wx.Bitmap( "..//icons//find.png", wx.BITMAP_TYPE_ANY ), wx.NullBitmap, wx.ITEM_NORMAL, wx.EmptyString, wx.EmptyString, None ) 
         
         self.m_toolBar1.AddSeparator()
         
         self.m_toolBar1.AddSeparator()
         self.m_toolBar1.AddSeparator()
         
-        self.m_tool_replay = self.m_toolBar1.AddLabelTool( wx.ID_ANY, u"数据分析", wx.Bitmap( "..//icons//local_read_a.png", wx.BITMAP_TYPE_ANY ), wx.NullBitmap, wx.ITEM_NORMAL, wx.EmptyString, wx.EmptyString, None ) 
+        self.m_tool_remoteCtrl = self.m_toolBar1.AddLabelTool( wx.ID_ANY, u"远程控制", wx.Bitmap( "..//icons//remote.png", wx.BITMAP_TYPE_ANY ), wx.NullBitmap, wx.ITEM_NORMAL, wx.EmptyString, wx.EmptyString, None ) 
+        
+        self.m_toolBar1.AddSeparator()
+        
+        self.m_toolBar1.AddSeparator()
+        self.m_toolBar1.AddSeparator()
+        
+        self.m_tool_replay = self.m_toolBar1.AddLabelTool( wx.ID_ANY, u"数据分析", wx.Bitmap( "..//icons//oscilloscope2.png", wx.BITMAP_TYPE_ANY ), wx.NullBitmap, wx.ITEM_NORMAL, wx.EmptyString, wx.EmptyString, None ) 
           
         self.m_toolBar1.Realize() 
         
@@ -448,7 +452,7 @@ class MainFrame ( wx.aui.AuiMDIParentFrame ):
         dirname, filename = os.path.split(os.path.abspath(sys.argv[0]))
         os.chdir(dirname)
 #         os.chdir("./apache-tomcat-7.0.68//bin//")
-        os.chdir("../apache-tomcat-7.0.68//bin//")
+#         os.chdir("../apache-tomcat-7.0.68//bin//")
         
         os.system("shutdown.bat")
         if(not self.thread_route_map==0):
